@@ -4,7 +4,7 @@ require_once __DIR__ . '/../model/User.php';
 
 class LoginController {
     public function index() {
-        $title = "Login — Gcon";
+        $title = "Sign in — Gcon";
         $description = "Sign in to your Gcon account.";
         $content = __DIR__ . '/../view/landing/page/login.php';
         include __DIR__ . '/../view/layout.php';
@@ -25,6 +25,7 @@ class LoginController {
         if ($user) {
             
             // 1.text 
+            /*
             if ($password === $user['password']) {
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['username']  = $user['username'];
@@ -33,9 +34,9 @@ class LoginController {
                 header("Location: /Gcon/public/index.php?page=home");
                 exit;
             }
+            */
 
             // 2.hash
-            /*
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['username']  = $user['username'];
@@ -44,7 +45,6 @@ class LoginController {
                 header("Location: /Gcon/public/index.php?page=home");
                 exit;
             }
-            */
         }
 
         // bro apa ini pusing banget anjrit

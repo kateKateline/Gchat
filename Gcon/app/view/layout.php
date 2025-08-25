@@ -17,9 +17,8 @@
     <?php include $content; ?>
   </main>
 
-  <?php 
-  // kalau bukan halaman login, tampilkan footer
-  if (($title ?? '') !== "Login — Gcon") {
+  <?php
+  if (($title ?? '') !== "Sign in — Gcon" && ($title ?? '') !== "Sign Up — Gcon") {
       include __DIR__ . '/landing/footer.php';
   }
   ?>

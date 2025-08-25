@@ -6,22 +6,22 @@
         <span class="text-2xl font-extrabold bg-gradient-to-r from-violet-600 to-cyan-500 bg-clip-text text-transparent">Gcon</span>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#features" class="text-slate-600 hover:text-slate-900">Explore</a>
-        <a href="#communities" class="text-slate-600 hover:text-slate-900">Communities</a>
-        <a href="#safety" class="text-slate-600 hover:text-slate-900">Safety</a>
-        <a href="#download" class="text-slate-600 hover:text-slate-900">Download</a>
+        <a href="index.php?page=home" class="text-slate-600 hover:text-slate-900">Home</a>
+        <a href="index.php?page=communities" class="text-slate-600 hover:text-slate-900">Communities</a>
+        <a href="index.php?page=safety" class="text-slate-600 hover:text-slate-900">Safety</a>
+        <a href="index.php?page=?" class="text-slate-600 hover:text-slate-900">Download</a>
       </div>
     </div>
     <!--Login-->
     <!-- Right: Auth -->
     <div class="flex items-center gap-2">
       <!-- Sign In ke loginController -->
-      <a href="index.php?page=login" 
+      <a href="index.php?page=sign in" 
          class="inline-flex h-9 items-center rounded-md border border-slate-200 px-4 text-sm font-medium text-slate-700 hover:bg-slate-50">
         Sign in
       </a>
       <!-- Sign Up bisa nanti diarahkan ke registerController -->
-      <a href="index.php?page=register" 
+      <a href="index.php?page=sign up" 
          class="inline-flex h-9 items-center rounded-md bg-slate-900 px-4 text-sm font-medium text-white hover:bg-slate-800">
         Sign up
       </a>

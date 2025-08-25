@@ -6,7 +6,6 @@ class User {
         $this->conn = $db;
     }
 
-    // cari user berdasarkan email
     public function findByEmail($email) {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -14,13 +13,9 @@ class User {
         return $stmt->get_result()->fetch_assoc();
     }
 
-    // simpan user baru
-    public function create($username, $email, $password, $profile_picture = null, $role = 'user') {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
-        $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, profile_picture, role) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $username, $email, $hash, $profile_picture, $role);
-
+    public function create($username, $email, $password) {
+        $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, 'user')");
+        $stmt->bind_param("sss", $username, $email, $password);
         return $stmt->execute();
     }
 }

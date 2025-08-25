@@ -10,6 +10,3 @@ class HomeController {
         include __DIR__ . '/../view/layout.php';
     }
 }
-
-
-
