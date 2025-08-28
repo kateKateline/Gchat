@@ -1,6 +1,12 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+
 require_once __DIR__ . '/../app/controller/HomeController.php';
 require_once __DIR__ . '/../app/controller/LoginController.php';
+require_once __DIR__ . '/../app/controller/LogoutController.php';
 require_once __DIR__ . '/../app/controller/RegisterController.php';
 
 $page = $_GET['page'] ?? 'home';
@@ -12,7 +18,14 @@ switch ($page) {
         $controller->index();
         break;
 
-    case 'sign in':
+    case 'communities':
+        require_once __DIR__ . '/../app/controller/CommunityController.php';
+        $controller = new CommunityController();
+        $controller->index();
+        break;
+
+
+    case 'login':
         $controller = new LoginController();
         if ($action === 'auth') {
             $controller->authenticate();
@@ -21,7 +34,7 @@ switch ($page) {
         }
         break;
 
-    case 'sign up':
+    case 'register':
         $controller = new RegisterController();
         if ($action === 'store') {
             $controller->store();
@@ -30,6 +43,11 @@ switch ($page) {
         }
         break;
 
+    case 'logout':
+        $controller = new LogoutController();
+        $controller->index();
+        break;
+
     default:
-        echo "404 - Page not found";
+        include '404.php';
 }

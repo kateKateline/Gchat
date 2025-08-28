@@ -41,6 +41,7 @@ class LoginController {
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['username']  = $user['username'];
                 $_SESSION['role']      = $user['role'];
+                $_SESSION['profile_image'] = $user['profile_image'];
 
                 header("Location: /Gcon/public/index.php?page=home");
                 exit;

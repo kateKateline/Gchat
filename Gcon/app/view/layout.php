@@ -11,7 +11,7 @@
 </head>
 <body class="antialiased text-slate-900">
 
-  <?php include __DIR__ . '/landing/navbar.php'; ?>
+  <?php include __DIR__ . '../landing/page/navbar.php'; ?>
 
   <main>
     <?php include $content; ?>
@@ -19,7 +19,7 @@
 
   <?php
   if (($title ?? '') !== "Sign in — Gcon" && ($title ?? '') !== "Sign Up — Gcon") {
-      include __DIR__ . '/landing/footer.php';
+      include __DIR__ . '../landing/page/footer.php';
   }
   ?>
 </body>
