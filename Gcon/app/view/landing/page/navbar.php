@@ -7,9 +7,9 @@
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
         <a href="index.php?page=home" class="text-slate-600 hover:text-slate-900">Home</a>
-        <a href="index.php?page=communities" class="text-slate-600 hover:text-slate-900">Communities</a>
-        <a href="index.php?page=safety" class="text-slate-600 hover:text-slate-900">Safety</a>
-        <a href="index.php?page=?" class="text-slate-600 hover:text-slate-900">Download</a>
+        <a href="index.php?page=discover" class="text-slate-600 hover:text-slate-900">Discover</a>
+        <a href="index.php?page=event" class="text-slate-600 hover:text-slate-900">Event</a>
+        <a href="index.php?page=dev" class="text-slate-600 hover:text-slate-900">Developer</a>
       </div>
     </div>
     <!--Login-->
@@ -34,6 +34,8 @@
         <?php echo htmlspecialchars($_SESSION['username']); ?>
       </span>
       </a>
+
+      <a href="index.php?page=logout">test</a>
 
   <?php else: ?>
     <a href="index.php?page=login"

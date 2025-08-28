@@ -8,6 +8,8 @@ require_once __DIR__ . '/../app/controller/HomeController.php';
 require_once __DIR__ . '/../app/controller/LoginController.php';
 require_once __DIR__ . '/../app/controller/LogoutController.php';
 require_once __DIR__ . '/../app/controller/RegisterController.php';
+require_once __DIR__ . '/../app/controller/DiscoverController.php';
+
 
 $page = $_GET['page'] ?? 'home';
 $action = $_GET['action'] ?? '';
@@ -18,12 +20,10 @@ switch ($page) {
         $controller->index();
         break;
 
-    case 'communities':
-        require_once __DIR__ . '/../app/controller/CommunityController.php';
-        $controller = new CommunityController();
+    case 'discover':
+        $controller = new DiscoverController();
         $controller->index();
-        break;
-
+        break;        
 
     case 'login':
         $controller = new LoginController();
