@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Sep 2025 pada 06.21
+-- Waktu pembuatan: 15 Sep 2025 pada 06.27
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.25
 
@@ -113,15 +113,34 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `profile_image`, `banner`, `about_me`, `role`, `created_at`, `status`) VALUES
-(1, 'MIce', 'mice@gmail.com', '$2y$10$y3Qv8bCE2tvesqp5cBkLSevtqm0ZAUdJgza3NFItQz19JfVgXMVje', '68c24b786aa94_images.jpg', '68c78878dd31c-68c37c4c5784b-mewo.png', 'Hello! My name is Michele, a student majoring in Software Engineering (RPL). I am passionate about technology, especially in software development, web programming, and database management.\r\n\r\nI enjoy learning how to design and build applications that can solve real-world problems. Currently, I am studying programming languages such as Java, PHP, and JavaScript, while also exploring UI/UX design to improve user experiences.\r\n\r\nMy goal is to become a professional software developer who can contribute to innovative projects and continue to grow in the IT industry.', 'admin', '2025-08-25 03:41:00', 'online'),
+(1, 'MIce', 'mice@gmail.com', '$2y$10$X25U9eLa2OCm1Spgiz4LUOFCD3lf9K7UNcCrzFIoB1MhPe.XkrvW6', '68c2d8b4ad668_68c24b786aa94_images.jpg', '68c37c4c5784b-mewo.png', '', 'admin', '2025-08-25 03:41:00', 'online'),
 (2, 'Mikhail', 'mikel@gmail.com', '$2y$10$Fh6CAiWwgtgDW23QD47ZWOczojHLNhxNIdeieIKH3pniJn6Ea5PNW', 'default.png', '', '', 'user', '2025-08-25 04:00:03', 'offline'),
 (3, 'Egor', 'gor@gmail.com', '123', 'default.png', '', '', 'user', '2025-08-28 06:24:14', 'offline'),
 (4, 'mike', 'mimi@gmail.com', '123', 'default.png', '', '', 'user', '2025-08-28 06:25:12', 'offline'),
 (5, 'fitriwemingsigma', 'fitir@gmail.com', '$2y$10$NTaoRpc/WM/5uJ3OrOu/Z.NNq9f.sJvlPV2lacW9Jsccve7dukVhS', 'default.png', '', '', 'user', '2025-08-27 04:13:15', 'offline'),
 (6, 'Kangkung', 'raju@gmail.com', '$2y$10$7OeSDUIsIcHniQhNbMyMmuF2tsef41us3oIK7ZxUTRaKh2g7j4BAO', 'default.png', '', '', 'user', '2025-08-28 00:28:59', 'offline'),
 (7, 'badakberenang', 'arthur@gmail.com', '$2y$10$4ikWmt59iOcU041/COIfkui5licjn6mHRFg0.i2gN2bs36Vlr..Bu', 'default.png', '', '', 'user', '2025-08-28 06:40:29', 'offline'),
-(8, 'riri', 'riri@gmail.com', '$2y$10$MKpXZ8I3zhLDjlFZUtBcIeEmTIsnHKjh8I3r82TOed83vbriYTwCW', 'default.png', '', '', 'user', '2025-09-11 04:10:31', 'offline'),
-(9, 'eawgaweg', 'r@gmail.com', '$2y$10$2E./UxApxKbgPUmz7.9J8uNLbvtiMf43t1L9OQkrNbkH0a0v1ihSm', 'default.png', '', NULL, 'user', '2025-09-15 03:24:38', 'offline');
+(8, 'riri', 'riri@gmail.com', '$2y$10$MKpXZ8I3zhLDjlFZUtBcIeEmTIsnHKjh8I3r82TOed83vbriYTwCW', 'default.png', '', '', 'user', '2025-09-11 04:10:31', 'offline');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_sessions`
+--
+
+CREATE TABLE `user_sessions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `session_token` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `user_sessions`
+--
+
+INSERT INTO `user_sessions` (`id`, `user_id`, `session_token`, `created_at`) VALUES
+(1, 1, '4a96ef985c2954b962958793217a0434', '2025-09-12 14:53:04');
 
 --
 -- Indexes for dumped tables
@@ -166,6 +185,13 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indeks untuk tabel `user_sessions`
+--
+ALTER TABLE `user_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -197,7 +223,13 @@ ALTER TABLE `server_members`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_sessions`
+--
+ALTER TABLE `user_sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -228,6 +260,12 @@ ALTER TABLE `servers`
 ALTER TABLE `server_members`
   ADD CONSTRAINT `server_members_ibfk_1` FOREIGN KEY (`server_id`) REFERENCES `servers` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `server_members_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `user_sessions`
+--
+ALTER TABLE `user_sessions`
+  ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
