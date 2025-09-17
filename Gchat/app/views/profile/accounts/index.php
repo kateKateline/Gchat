@@ -1,5 +1,8 @@
+
+
+<div class="flex flex-col min-h-screen">
   <!-- Banner -->
-    <div class="relative mb-8">
+  <div class="relative mb-8">
       <?php 
         $bannerFile = $user['banner'] ?? null;
         $bannerUrl  = $bannerFile ? "uploads/banner/" . htmlspecialchars($bannerFile) : "assets/img/banner-default.jpg";
@@ -156,8 +159,7 @@
           <?php endif; ?>
         </div>
       </div>
-    </div>
-  </main>
+  </div>
 </div>
 
 <!-- About Me Edit Modal -->
